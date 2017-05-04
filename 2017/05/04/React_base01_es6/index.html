@@ -102,17 +102,17 @@
 
 
 
-<meta name="description" content="ES6版以下几点需要注意  不支持 getInitialState 在设置组件初始的 state ，可在组件的 constructor 中通过 this.state 设置，也可直接作为 properties 定义  propTypes、defaultProps 作为 properties 定义，也可在组件外部通过键值对方式设置。  不支持 mixins，可以使用高阶组件写法，或者 decorato">
+<meta name="description" content="ES6版以下几点需要注意  不支持 getInitialState 在设置组件初始的 state ，可在组件的 constructor 中通过 this.state 设置，也可直接作为 properties 定义  propTypes、defaultProps 作为 properties 定义，也可在组件外部通过键值对方式设置。  不支持 mixins，可以使用高阶组件写法，或者 decorat">
 <meta name="keywords" content="React">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React基础知识详细_ES6版">
 <meta property="og:url" content="http://yoursite.com/2017/05/04/React_base01_es6/index.html">
 <meta property="og:site_name" content="夏木南生">
-<meta property="og:description" content="ES6版以下几点需要注意  不支持 getInitialState 在设置组件初始的 state ，可在组件的 constructor 中通过 this.state 设置，也可直接作为 properties 定义  propTypes、defaultProps 作为 properties 定义，也可在组件外部通过键值对方式设置。  不支持 mixins，可以使用高阶组件写法，或者 decorato">
-<meta property="og:updated_time" content="2017-05-04T01:39:31.486Z">
+<meta property="og:description" content="ES6版以下几点需要注意  不支持 getInitialState 在设置组件初始的 state ，可在组件的 constructor 中通过 this.state 设置，也可直接作为 properties 定义  propTypes、defaultProps 作为 properties 定义，也可在组件外部通过键值对方式设置。  不支持 mixins，可以使用高阶组件写法，或者 decorat">
+<meta property="og:updated_time" content="2017-05-04T02:03:49.060Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React基础知识详细_ES6版">
-<meta name="twitter:description" content="ES6版以下几点需要注意  不支持 getInitialState 在设置组件初始的 state ，可在组件的 constructor 中通过 this.state 设置，也可直接作为 properties 定义  propTypes、defaultProps 作为 properties 定义，也可在组件外部通过键值对方式设置。  不支持 mixins，可以使用高阶组件写法，或者 decorato">
+<meta name="twitter:description" content="ES6版以下几点需要注意  不支持 getInitialState 在设置组件初始的 state ，可在组件的 constructor 中通过 this.state 设置，也可直接作为 properties 定义  propTypes、defaultProps 作为 properties 定义，也可在组件外部通过键值对方式设置。  不支持 mixins，可以使用高阶组件写法，或者 decorat">
 
 
 
@@ -341,7 +341,8 @@
       
 
       
-        <h3 id="ES6版以下几点需要注意"><a href="#ES6版以下几点需要注意" class="headerlink" title="ES6版以下几点需要注意"></a>ES6版以下几点需要注意</h3><blockquote>
+        <a id="more"></a>
+<h3 id="ES6版以下几点需要注意"><a href="#ES6版以下几点需要注意" class="headerlink" title="ES6版以下几点需要注意"></a>ES6版以下几点需要注意</h3><blockquote>
 <ul>
 <li>不支持 getInitialState 在设置组件初始的 state ，可在组件的 constructor 中通过 this.state 设置，也可直接作为 properties 定义 </li>
 <li>propTypes、defaultProps 作为 properties 定义，也可在组件外部通过键值对方式设置。 </li>
@@ -349,7 +350,6 @@
 <li>组件的名字的首字母一定要大写 </li>
 </ul>
 </blockquote>
-<a id="more"></a>
 <h3 id="顶层API"><a href="#顶层API" class="headerlink" title="顶层API"></a>顶层API</h3><p>最简单的React组件及其渲染<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 最简单的一个组件</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimpleComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span> &lt;div&gt; here we go &lt;/div&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 我们可以看看React给我们提供了哪些顶层组件</span></div><div class="line"><span class="built_in">console</span>.log( React );</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> SimpleComponent;</div></pre></td></tr></table></figure></p>
 <p><code>react.js</code></p>
 <blockquote>
@@ -625,7 +625,7 @@ ds.charset = 'UTF-8';
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

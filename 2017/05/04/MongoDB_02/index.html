@@ -102,17 +102,17 @@
 
 
 
-<meta name="description" content="Mongo命令和配置1.启动项1234567--dbpath 指定数据库的目录--port 端口 默认是27017--fork 以后台守护的方式进行启动--logpath 制定日志文件输出路径--config 指定一个配置文件--auth  以安全的方式启动数据库--rest   会启动一个帮助页面">
+<meta name="description" content="Mongo命令和配置">
 <meta name="keywords" content="MongoDB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongoDB从入门到放弃_02">
 <meta property="og:url" content="http://yoursite.com/2017/05/04/MongoDB_02/index.html">
 <meta property="og:site_name" content="夏木南生">
-<meta property="og:description" content="Mongo命令和配置1.启动项1234567--dbpath 指定数据库的目录--port 端口 默认是27017--fork 以后台守护的方式进行启动--logpath 制定日志文件输出路径--config 指定一个配置文件--auth  以安全的方式启动数据库--rest   会启动一个帮助页面">
-<meta property="og:updated_time" content="2017-05-04T01:39:31.480Z">
+<meta property="og:description" content="Mongo命令和配置">
+<meta property="og:updated_time" content="2017-05-04T02:03:38.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB从入门到放弃_02">
-<meta name="twitter:description" content="Mongo命令和配置1.启动项1234567--dbpath 指定数据库的目录--port 端口 默认是27017--fork 以后台守护的方式进行启动--logpath 制定日志文件输出路径--config 指定一个配置文件--auth  以安全的方式启动数据库--rest   会启动一个帮助页面">
+<meta name="twitter:description" content="Mongo命令和配置">
 
 
 
@@ -341,8 +341,8 @@
       
 
       
-        <h4 id="Mongo命令和配置"><a href="#Mongo命令和配置" class="headerlink" title="Mongo命令和配置"></a>Mongo命令和配置</h4><p><strong>1.启动项</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">--dbpath 指定数据库的目录</div><div class="line">--port 端口 默认是<span class="number">27017</span></div><div class="line">--fork 以后台守护的方式进行启动</div><div class="line">--logpath 制定日志文件输出路径</div><div class="line">--config 指定一个配置文件</div><div class="line">--auth  以安全的方式启动数据库</div><div class="line">--rest   会启动一个帮助页面</div></pre></td></tr></table></figure></p>
-<a id="more"></a>
+        <h4 id="Mongo命令和配置"><a href="#Mongo命令和配置" class="headerlink" title="Mongo命令和配置"></a>Mongo命令和配置</h4><a id="more"></a>
+<p><strong>1.启动项</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">--dbpath 指定数据库的目录</div><div class="line">--port 端口 默认是<span class="number">27017</span></div><div class="line">--fork 以后台守护的方式进行启动</div><div class="line">--logpath 制定日志文件输出路径</div><div class="line">--config 指定一个配置文件</div><div class="line">--auth  以安全的方式启动数据库</div><div class="line">--rest   会启动一个帮助页面</div></pre></td></tr></table></figure></p>
 <p><strong>2.关闭数据库</strong><br><code>db.shutdownServer();</code><br><strong>3.导入导出</strong><br>  导出 mongoexport<br>   <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-d 指定导出的数据库</div><div class="line">-c 制定导出的集合</div><div class="line">-o 导出的文件路径</div><div class="line">-q 进行过滤</div><div class="line">mongoexport -d local -c person -o bak.json</div></pre></td></tr></table></figure></p>
 <p>  导入 mongoimport<br>   <code>mongoimport -d local --collections person --file bak.json</code><br>   导入整个库<br>   <code>mongorestore --directoryperdb bak.dmp</code><br><strong>4.锁住写入</strong><br><code>db.runCommand({fstnc:1,lock:1});</code><br><strong>5.解锁</strong><br><code>db.fsyncUnlock();  //备份的时候要先锁住写入,备份完之后再解锁可以保证数据完整性</code><br><strong>6.增加角色</strong><br><code>db.addUser({&#39;chuhan&#39;:&#39;123&#39;});    //已经废弃不建议使用</code><br><code>db.createUser({user:&#39;chuhan&#39;,pwd:&#39;123&#39;,roles:[{role:&#39;userAdmin&#39;,db:&#39;admin&#39;}]})</code><br><strong>7.显示所有的角色</strong><br><code>db.showRoles</code><br><strong>8.修改用户密码</strong><br><code>db.changeUserPassword(&#39;chuhan&#39;,&#39;123&#39;);</code><br><strong>9.授权登录</strong><br><code>db.auth(&#39;chuhan&#39;,&#39;123&#39;);   //如果显示1,表示成功,否则授权失败</code><br><strong>10.查看用户权限</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">db.runCommand(&#123;</div><div class="line">	<span class="attr">usersInfo</span>:<span class="string">'chuhan'</span>,</div><div class="line">	<span class="attr">showPrivileges</span>:<span class="literal">true</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p><strong>11.修改用户权限</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.runCommand(&#123;</div><div class="line">	<span class="attr">updateUser</span>:<span class="string">'chuhan'</span>,</div><div class="line">	<span class="attr">pwd</span>:<span class="string">'789'</span>,</div><div class="line">	<span class="attr">customData</span>:&#123;<span class="attr">title</span>:<span class="string">'manager'</span>,<span class="attr">age</span>:<span class="number">12</span>&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
@@ -490,7 +490,7 @@ ds.charset = 'UTF-8';
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -102,17 +102,17 @@
 
 
 
-<meta name="description" content="MongoDB常用的指令1.去重    1234db.runCommand(&amp;#123;	distinct:&apos;person&apos;,	key:&apos;home&apos;&amp;#125;);">
+<meta name="description" content="MongoDB常用的指令">
 <meta name="keywords" content="MongoDB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongoDB从入门到放弃_03">
 <meta property="og:url" content="http://yoursite.com/2017/05/04/MongoDB_03/index.html">
 <meta property="og:site_name" content="夏木南生">
-<meta property="og:description" content="MongoDB常用的指令1.去重    1234db.runCommand(&amp;#123;	distinct:&apos;person&apos;,	key:&apos;home&apos;&amp;#125;);">
-<meta property="og:updated_time" content="2017-05-04T01:39:31.484Z">
+<meta property="og:description" content="MongoDB常用的指令">
+<meta property="og:updated_time" content="2017-05-04T02:03:44.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB从入门到放弃_03">
-<meta name="twitter:description" content="MongoDB常用的指令1.去重    1234db.runCommand(&amp;#123;	distinct:&apos;person&apos;,	key:&apos;home&apos;&amp;#125;);">
+<meta name="twitter:description" content="MongoDB常用的指令">
 
 
 
@@ -341,8 +341,8 @@
       
 
       
-        <h3 id="MongoDB常用的指令"><a href="#MongoDB常用的指令" class="headerlink" title="MongoDB常用的指令"></a>MongoDB常用的指令</h3><p><strong>1.去重</strong><br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">db.runCommand(&#123;</div><div class="line">	<span class="attr">distinct</span>:<span class="string">'person'</span>,</div><div class="line">	<span class="attr">key</span>:<span class="string">'home'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<a id="more"></a>
+        <h3 id="MongoDB常用的指令"><a href="#MongoDB常用的指令" class="headerlink" title="MongoDB常用的指令"></a>MongoDB常用的指令</h3><a id="more"></a>
+<p><strong>1.去重</strong><br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">db.runCommand(&#123;</div><div class="line">	<span class="attr">distinct</span>:<span class="string">'person'</span>,</div><div class="line">	<span class="attr">key</span>:<span class="string">'home'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p><strong>2.分组</strong><br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">db.runCommand(&#123;</div><div class="line">	<span class="attr">group</span>:&#123;</div><div class="line">		<span class="attr">ns</span>:集合名称,</div><div class="line">		<span class="attr">key</span>:分组的键,</div><div class="line">		<span class="attr">initial</span>:初始化,</div><div class="line">		<span class="attr">$reduce</span>:分解器,</div><div class="line">		<span class="attr">condition</span>:条件,</div><div class="line">		<span class="attr">finalize</span>:完成时的处理器</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line">db.runCommand(&#123;</div><div class="line">	<span class="attr">group</span>:&#123;</div><div class="line">		<span class="attr">ns</span>:<span class="string">'person'</span>,</div><div class="line">		<span class="attr">key</span>:<span class="string">'email'</span>,</div><div class="line">		<span class="attr">initial</span>:&#123;<span class="attr">age</span>:<span class="number">0</span>&#125;,</div><div class="line">		<span class="attr">$reduce</span>:<span class="function"><span class="keyword">function</span>(<span class="params">doc,acc</span>)</span>&#123;</div><div class="line">			<span class="keyword">if</span>(doc.age&gt;acc.age)&#123;</div><div class="line">				acc.age = doc.age;</div><div class="line">				acc.email = doc.email;</div><div class="line">			&#125;</div><div class="line">		&#125;,</div><div class="line">		<span class="attr">condition</span>:&#123;<span class="attr">age</span>:&#123;<span class="attr">$gt</span>:<span class="number">10</span>&#125;&#125;,</div><div class="line">		<span class="attr">finalize</span>:<span class="function"><span class="keyword">function</span>(<span class="params">acc</span>)</span>&#123;</div><div class="line">			print(acc.age);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p><strong>3.删除集合</strong><br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.runCommand(&#123;</div><div class="line">	<span class="attr">drop</span>:<span class="string">'person'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <p><strong>4.查看数据库信息</strong><br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.runCommand(&#123;</div><div class="line">	<span class="attr">buildInfo</span>:<span class="number">1</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
@@ -519,7 +519,7 @@ ds.charset = 'UTF-8';
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
