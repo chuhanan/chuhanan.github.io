@@ -102,17 +102,17 @@
 
 
 
-<meta name="description" content="1. JS 你不知道的Array1.检测数组12345678if(value instanceof Array)&amp;#123;	//对数组执行操作&amp;#125;//上面这种写法是ECMAScript3时候的if(Array.isArray(value))&amp;#123;	//对数组执行操作&amp;#125;//这种是ES5中的写法 为什么要提这个呢?因为这个ES5的写法只支持IE9+ ff4+ Safari5">
+<meta name="description" content="1. JS 你不知道的Array">
 <meta name="keywords" content="ES5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES5 Array详细">
 <meta property="og:url" content="http://yoursite.com/2017/05/04/ES5_Array说明/index.html">
 <meta property="og:site_name" content="夏木南生">
-<meta property="og:description" content="1. JS 你不知道的Array1.检测数组12345678if(value instanceof Array)&amp;#123;	//对数组执行操作&amp;#125;//上面这种写法是ECMAScript3时候的if(Array.isArray(value))&amp;#123;	//对数组执行操作&amp;#125;//这种是ES5中的写法 为什么要提这个呢?因为这个ES5的写法只支持IE9+ ff4+ Safari5">
-<meta property="og:updated_time" content="2017-05-04T02:02:33.683Z">
+<meta property="og:description" content="1. JS 你不知道的Array">
+<meta property="og:updated_time" content="2017-05-04T02:07:11.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES5 Array详细">
-<meta name="twitter:description" content="1. JS 你不知道的Array1.检测数组12345678if(value instanceof Array)&amp;#123;	//对数组执行操作&amp;#125;//上面这种写法是ECMAScript3时候的if(Array.isArray(value))&amp;#123;	//对数组执行操作&amp;#125;//这种是ES5中的写法 为什么要提这个呢?因为这个ES5的写法只支持IE9+ ff4+ Safari5">
+<meta name="twitter:description" content="1. JS 你不知道的Array">
 
 
 
@@ -341,8 +341,8 @@
       
 
       
-        <a id="more"></a>
-<h4 id="1-JS-你不知道的Array"><a href="#1-JS-你不知道的Array" class="headerlink" title="1. JS 你不知道的Array"></a>1. JS 你不知道的Array</h4><p>1.检测数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(value <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123;</div><div class="line">	<span class="comment">//对数组执行操作</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//上面这种写法是ECMAScript3时候的</span></div><div class="line"><span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(value))&#123;</div><div class="line">	<span class="comment">//对数组执行操作</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//这种是ES5中的写法</span></div></pre></td></tr></table></figure></p>
+        <h4 id="1-JS-你不知道的Array"><a href="#1-JS-你不知道的Array" class="headerlink" title="1. JS 你不知道的Array"></a>1. JS 你不知道的Array</h4><a id="more"></a>
+<p>1.检测数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(value <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123;</div><div class="line">	<span class="comment">//对数组执行操作</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//上面这种写法是ECMAScript3时候的</span></div><div class="line"><span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(value))&#123;</div><div class="line">	<span class="comment">//对数组执行操作</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//这种是ES5中的写法</span></div></pre></td></tr></table></figure></p>
 <p>为什么要提这个呢?因为这个ES5的写法只支持IE9+ ff4+ Safari5+Chrome,所以在涉及要浏览器兼容的时候就要注意了。</p>
 <p>2.数组的栈方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors =[];</div><div class="line"><span class="keyword">var</span> count = colors.push(<span class="string">"red"</span>,<span class="string">"black"</span>);</div><div class="line">alert(count);   <span class="comment">//2,push方法有一个返回值,返回当前的数组的长度</span></div><div class="line"></div><div class="line">count = colors.push(<span class="string">"yellow"</span>);</div><div class="line">alert(count);   <span class="comment">//3</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> item = colors.pop(); <span class="comment">//pop方法删除数组的最后一项</span></div><div class="line">alert(item);             <span class="comment">//yellow ,说明之后返回值是删除的那一项</span></div></pre></td></tr></table></figure></p>
 <p>3.数组的队列方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span>  colors = [<span class="string">"red"</span>,<span class="string">"black"</span>];</div><div class="line"><span class="keyword">var</span> item =  colors.unshift(<span class="string">"white"</span>);  <span class="comment">//white,并且数组的长度加1</span></div></pre></td></tr></table></figure></p>
