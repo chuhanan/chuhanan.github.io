@@ -1,0 +1,744 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MongoDB," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="MongoDB数据库下载地址:http://pan.baidu.com/s/1c2yrmQMongoDB可视化工具下载:http://pan.baidu.com/s/1bpaBUG31.启动mongo    mongod --dbpath ./data      //data存在2.创建mongo服务        1234mongod.exe --dbpath E:\DataTools\mong">
+<meta name="keywords" content="MongoDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB从入门到放弃_01">
+<meta property="og:url" content="http://yoursite.com/2017/05/04/MongoDB_01/index.html">
+<meta property="og:site_name" content="夏木南生">
+<meta property="og:description" content="MongoDB数据库下载地址:http://pan.baidu.com/s/1c2yrmQMongoDB可视化工具下载:http://pan.baidu.com/s/1bpaBUG31.启动mongo    mongod --dbpath ./data      //data存在2.创建mongo服务        1234mongod.exe --dbpath E:\DataTools\mong">
+<meta property="og:updated_time" content="2017-05-04T01:39:31.479Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDB从入门到放弃_01">
+<meta name="twitter:description" content="MongoDB数据库下载地址:http://pan.baidu.com/s/1c2yrmQMongoDB可视化工具下载:http://pan.baidu.com/s/1bpaBUG31.启动mongo    mongod --dbpath ./data      //data存在2.创建mongo服务        1234mongod.exe --dbpath E:\DataTools\mong">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6317246749018686000,
+      author: '博主大人'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/04/MongoDB_01/"/>
+
+  <title> MongoDB从入门到放弃_01 | 夏木南生 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">夏木南生</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">楚寒</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            我的资料
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时光轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MongoDB从入门到放弃_01
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-04T09:39:31+08:00" content="2017-05-04">
+              2017-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/MongoDB/" itemprop="url" rel="index">
+                    <span itemprop="name">MongoDB</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/04/MongoDB_01/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/04/MongoDB_01/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="MongoDB数据库下载地址-http-pan-baidu-com-s-1c2yrmQ"><a href="#MongoDB数据库下载地址-http-pan-baidu-com-s-1c2yrmQ" class="headerlink" title="MongoDB数据库下载地址:http://pan.baidu.com/s/1c2yrmQ"></a>MongoDB数据库下载地址:<a href="http://pan.baidu.com/s/1c2yrmQ" target="_blank" rel="external">http://pan.baidu.com/s/1c2yrmQ</a></h4><h4 id="MongoDB可视化工具下载-http-pan-baidu-com-s-1bpaBUG3"><a href="#MongoDB可视化工具下载-http-pan-baidu-com-s-1bpaBUG3" class="headerlink" title="MongoDB可视化工具下载:http://pan.baidu.com/s/1bpaBUG3"></a>MongoDB可视化工具下载:<a href="http://pan.baidu.com/s/1bpaBUG3" target="_blank" rel="external">http://pan.baidu.com/s/1bpaBUG3</a></h4><p><strong>1.启动mongo</strong><br>    <code>mongod --dbpath ./data      //data存在</code><br><strong>2.创建mongo服务</strong><br>        <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mongod.exe --dbpath E:\DataTools\mongodata --logpath E:\DataTools\mongolog</div><div class="line">--logappend --directoryperdb --serviceName MongoDB --install</div><div class="line"> 删除一个服务</div><div class="line">在管理员cmd模式下:sc <span class="keyword">delete</span> MongoDB(服务名)</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><strong>3.查看当前的数据库</strong><br>    <code>show dbs</code><br><strong>4.切换数据库</strong><br>    <code>use local</code><br><strong>5.查看当前数据库下的所有的collections</strong><br>    <code>show collections</code><br><strong>6.查看数据</strong><br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">db.person.find();</div><div class="line">db.person.findOne();</div></pre></td></tr></table></figure></p>
+<p><strong>7.插入数据</strong><br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.person.insert(&#123;<span class="attr">name</span>:<span class="string">'楚寒'</span>,<span class="attr">age</span>:<span class="number">20</span>&#125;);</div><div class="line">db.person.save(&#123;<span class="attr">name</span>:<span class="string">'123'</span>,<span class="attr">age</span>:<span class="number">12</span>&#125;);   <span class="comment">//不支持批量插入</span></div><div class="line">save相同的__id时不会报错,insert则会报错</div></pre></td></tr></table></figure></p>
+<p>  批量插入数据(可以用脚本插入)<br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">	db.person.insert(&#123;<span class="attr">name</span>:<span class="string">'张三'</span>+i,<span class="attr">age</span>:<span class="number">10</span>+i&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>8.更新数据</strong></p>
+<pre><code>&gt;db.person.update({name:&apos;楚寒&apos;},{$set:{email:&apos;384840951@qq.com&apos;}})
+&gt;db.person.update({name:&apos;楚寒&apos;},{address:&apos;hello&apos;}); //这种更新会把之前的数据替换
+&gt;//如果更新的键不存在 那么这个键就会被增加上去
+&gt;db.collection.update(criteria,objNew,upsert,multi)
+&gt;参数说明：
+&gt;criteria：查询条件
+&gt;objNew：update对象和一些更新操作符
+&gt;upsert：如果不存在update的记录，是否插入objNew这个新的文档，true为插入，默认为false，不插入。
+&gt;multi：默认是false，只更新找到的第一条记录。如果为true，把按条件查询出来的记录全部更新。
+</code></pre>  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"> 修改器    </div><div class="line">$inc    针对数字类型</div><div class="line">	db.courses.update(&#123;&#125;,&#123;<span class="attr">$inc</span>:&#123;<span class="attr">price</span>:<span class="number">500</span>&#125;&#125;);  给所有数据的price字段加上<span class="number">500</span>;</div><div class="line">$unset  删除所有的xx字段</div><div class="line">	db.courses.update(&#123;&#125;,&#123;<span class="attr">$unset</span>:&#123;<span class="attr">price</span>:<span class="number">1</span>&#125;&#125;,<span class="literal">true</span>,<span class="literal">true</span>);</div><div class="line">$push   给collections中添加一个数组字段</div><div class="line">	db.person.update(&#123;&#125;,&#123;<span class="attr">$push</span>:&#123;<span class="attr">lessons</span>:<span class="string">'js'</span>&#125;&#125;,<span class="literal">true</span>,<span class="literal">true</span>);</div><div class="line">$pushAll   给collections中批量添加元素</div><div class="line">	db.person.update(&#123;&#125;,&#123;<span class="attr">$pushAll</span>:&#123;<span class="attr">lessons</span>:<span class="string">'js'</span>&#125;&#125;,<span class="literal">true</span>,<span class="literal">true</span>);</div><div class="line">$addToSet   给collections中添加元素   元素不重复</div><div class="line">	db.person.update(&#123;&#125;,&#123;<span class="attr">$addToSet</span>:&#123;<span class="attr">lessons</span>:<span class="string">'js'</span>&#125;&#125;,<span class="literal">true</span>,<span class="literal">true</span>);</div><div class="line">$pop    删除数组字段中的最后一个元素</div><div class="line">	db.person.update(&#123;&#125;,&#123;<span class="attr">$pop</span>:&#123;<span class="attr">lessons</span>:<span class="number">1</span>&#125;&#125;,<span class="literal">true</span>,<span class="literal">true</span>);</div><div class="line">$pull   删除数组字段中的指定的一个元素</div><div class="line">	db.person.update(&#123;&#125;,&#123;<span class="attr">$pull</span>:&#123;<span class="attr">lessons</span>:<span class="string">'js'</span>&#125;&#125;,<span class="literal">true</span>,<span class="literal">true</span>);</div><div class="line">$pullAll   删除数组字段中的指定的元素</div><div class="line">	db.person.update(&#123;&#125;,&#123;<span class="attr">$pullAll</span>:&#123;<span class="attr">lessons</span>:[<span class="string">'js'</span>,<span class="string">'node'</span>]&#125;&#125;,<span class="literal">true</span>,<span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<p><strong>9.删除数据</strong><br>    <code>db.person.remove({name:&#39;楚寒&#39;});</code><br><strong>10.删除集合</strong><br>    <code>db.person.drop();</code><br><strong>11.删除数据库</strong><br>    <code>db.dropDataBase();</code><br><strong>12.查看数据库的名称</strong><br>    <code>db.getName();</code><br><strong>13.查看数据库的状态</strong><br>    <code>db.stats();</code><br><strong>14.查看帮助</strong><br>    <code>db.help();</code><br><strong>15.改变id的显示方式</strong><br>    <code>db.person.find({},{_id:0});   //隐藏id列</code><br><strong>16.runCommand findAndModify</strong><br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> result =runCommand(&#123;</div><div class="line">	<span class="attr">findAndModify</span>:<span class="string">'person'</span>,      <span class="comment">//更新的集合名称</span></div><div class="line">	query:&#123;<span class="attr">name</span>:<span class="string">'张三'</span>&#125;,	   <span class="comment">//更新条件</span></div><div class="line">	update:&#123;<span class="attr">$set</span>:&#123;<span class="attr">age</span>:<span class="number">33</span>&#125;&#125;,   <span class="comment">//需要更新的值</span></div><div class="line">	<span class="keyword">new</span>:<span class="literal">true</span>      <span class="comment">//是否返回更新后的值</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>帅的人已经打赏~！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="https://chuhanan.github.io/wechatpay.png" alt="QQ:384840951 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://chuhanan.github.io/alipay.png" alt="QQ:384840951 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MongoDB/" rel="tag">#MongoDB</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/04/Java_02_集合总结/" rel="next" title="JAVA集合总结">
+                <i class="fa fa-chevron-left"></i> JAVA集合总结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/04/MongoDB_02/" rel="prev" title="MongoDB从入门到放弃_02">
+                MongoDB从入门到放弃_02 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<section id="comments">
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="2017/05/04/MongoDB_01/" data-title="MongoDB从入门到放弃_01" data-url="http://yoursite.com/2017/05/04/MongoDB_01/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chuhan"};
+(function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+ || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/13514230?v=3&s=460"
+               alt="QQ:384840951" />
+          <p class="site-author-name" itemprop="name">QQ:384840951</p>
+          <p class="site-description motion-element" itemprop="description">人生不只有代码,还有诗和远方</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chuhanan/chuhanan.github.io" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://ltaoo.github.io/" title="ltaoo" target="_blank">ltaoo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yohnz.github.com/" title="云雾" target="_blank">云雾</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="codergao.cn" title="Coder-Gao" target="_blank">Coder-Gao</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://guoyongfeng.github.io/idoc/" title="郭永峰老师" target="_blank">郭永峰老师</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://foxsnower.github.io/" title="FoxSnower" target="_blank">FoxSnower</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#MongoDB数据库下载地址-http-pan-baidu-com-s-1c2yrmQ"><span class="nav-number">1.</span> <span class="nav-text">MongoDB数据库下载地址:http://pan.baidu.com/s/1c2yrmQ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MongoDB可视化工具下载-http-pan-baidu-com-s-1bpaBUG3"><span class="nav-number">2.</span> <span class="nav-text">MongoDB可视化工具下载:http://pan.baidu.com/s/1bpaBUG3</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">QQ:384840951</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chuhan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

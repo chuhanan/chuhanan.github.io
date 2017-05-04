@@ -1,0 +1,744 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ES5," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1. JS 你不知道的Array1.检测数组12345678if(value instanceof Array)&amp;#123;	//对数组执行操作&amp;#125;//上面这种写法是ECMAScript3时候的if(Array.isArray(value))&amp;#123;	//对数组执行操作&amp;#125;//这种是ES5中的写法 为什么要提这个呢?因为这个ES5的写法只支持IE9+ ff4+ Safari5+">
+<meta name="keywords" content="ES5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES5 Array详细">
+<meta property="og:url" content="http://yoursite.com/2017/05/04/ES5_Array说明/index.html">
+<meta property="og:site_name" content="夏木南生">
+<meta property="og:description" content="1. JS 你不知道的Array1.检测数组12345678if(value instanceof Array)&amp;#123;	//对数组执行操作&amp;#125;//上面这种写法是ECMAScript3时候的if(Array.isArray(value))&amp;#123;	//对数组执行操作&amp;#125;//这种是ES5中的写法 为什么要提这个呢?因为这个ES5的写法只支持IE9+ ff4+ Safari5+">
+<meta property="og:updated_time" content="2017-05-04T01:39:31.456Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES5 Array详细">
+<meta name="twitter:description" content="1. JS 你不知道的Array1.检测数组12345678if(value instanceof Array)&amp;#123;	//对数组执行操作&amp;#125;//上面这种写法是ECMAScript3时候的if(Array.isArray(value))&amp;#123;	//对数组执行操作&amp;#125;//这种是ES5中的写法 为什么要提这个呢?因为这个ES5的写法只支持IE9+ ff4+ Safari5+">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6317246749018686000,
+      author: '博主大人'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/04/ES5_Array说明/"/>
+
+  <title> ES5 Array详细 | 夏木南生 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">夏木南生</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">楚寒</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            我的资料
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时光轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ES5 Array详细
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-04T09:39:31+08:00" content="2017-05-04">
+              2017-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/04/ES5_Array说明/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/04/ES5_Array说明/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="1-JS-你不知道的Array"><a href="#1-JS-你不知道的Array" class="headerlink" title="1. JS 你不知道的Array"></a>1. JS 你不知道的Array</h4><p>1.检测数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(value <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123;</div><div class="line">	<span class="comment">//对数组执行操作</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//上面这种写法是ECMAScript3时候的</span></div><div class="line"><span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(value))&#123;</div><div class="line">	<span class="comment">//对数组执行操作</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//这种是ES5中的写法</span></div></pre></td></tr></table></figure></p>
+<p>为什么要提这个呢?因为这个ES5的写法只支持IE9+ ff4+ Safari5+Chrome,所以在涉及要浏览器兼容的时候就要注意了。<br><a id="more"></a><br>2.数组的栈方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors =[];</div><div class="line"><span class="keyword">var</span> count = colors.push(<span class="string">"red"</span>,<span class="string">"black"</span>);</div><div class="line">alert(count);   <span class="comment">//2,push方法有一个返回值,返回当前的数组的长度</span></div><div class="line"></div><div class="line">count = colors.push(<span class="string">"yellow"</span>);</div><div class="line">alert(count);   <span class="comment">//3</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> item = colors.pop(); <span class="comment">//pop方法删除数组的最后一项</span></div><div class="line">alert(item);             <span class="comment">//yellow ,说明之后返回值是删除的那一项</span></div></pre></td></tr></table></figure></p>
+<p>3.数组的队列方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span>  colors = [<span class="string">"red"</span>,<span class="string">"black"</span>];</div><div class="line"><span class="keyword">var</span> item =  colors.unshift(<span class="string">"white"</span>);  <span class="comment">//white,并且数组的长度加1</span></div></pre></td></tr></table></figure></p>
+<p><code>数组的unshift方法是为数组添加第一项并返回该项</code> <code>数组的shift方法是为数组删除第一项并返回该项</code><br>4.数组的操作方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//concat  合并数组</span></div><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>,<span class="string">"blue"</span>];</div><div class="line"><span class="keyword">var</span> colors2 = colors .concat(<span class="string">"green"</span>);  <span class="comment">//注意:此时的colors还是原来的数组,没有改变</span></div><div class="line"><span class="comment">/*slice 分割数组并创建新的数组</span></div><div class="line">  当传入1个参数的情况下:该方法返回的是从参数位置开始到数组末尾的所有项</div><div class="line">  当传入2个参数的情况下:该方法返回的是从参数位置开始到第二个参数结束的的所有项,并不包括结束的位置项*/</div><div class="line"><span class="keyword">var</span> colors3 = colors2.slice(<span class="number">1</span>);  <span class="comment">//blue,green</span></div><div class="line"><span class="keyword">var</span> arr =  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"><span class="keyword">var</span> arr2 = arr.slice(<span class="number">1</span>,<span class="number">3</span>);   </div><div class="line"><span class="comment">//[ 2, 3 ]</span></div></pre></td></tr></table></figure></p>
+<p>如果slice()方法的参数中有一个负数的情况下,就用数组的长度加上该数来确定相对的位置,如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr =  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"><span class="keyword">var</span> arr_re = arr.slice(<span class="number">-2</span>,arr.length);</div><div class="line"><span class="comment">//[ 4, 5 ] ,  实际上的参数是 arr.silice(5-2,5);</span></div></pre></td></tr></table></figure></p>
+<hr>
+<p>数组的最强大的方法splice(),注意和上面的slice区别开;根据传入的参数的不同,它有很多种用法:</p>
+<blockquote>
+<p>删除:可以删除任意数量的项,需要传入2个参数,要删除的第一项的位置和要删除的项数<br>如 splice(0,2)会删除数组中的前两项<br>插入:可以向制定的位置插入任意数量的项,需要提供3个参数:起始位置,0(固定,表示是要删除的项,要插入的项),如果要传入多项,可以继续往后面传入更多的参数(项),<br>如splice(1,0,”red”,”blue”)   从第一个位置开始插入<br>替换:可以向制定位置插入任意数量的项,且同事删除任意数量的项,只需要指定3个参数(起始位置,要删除的项,和要删除的项数)<br>如splice(2,1,’red’,’green’)   从第二个位置开始删除1项,然后在2的位置上插入”red”和”green”<br><code>注意:splice()方法插入的时候是修改原数组,并不会返回新数组(它是没有返回值的)</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr =  [<span class="string">"aaa"</span>,<span class="string">'bbb'</span>,<span class="string">'ccc'</span>];</div><div class="line"><span class="keyword">var</span> arr_re = arr.splice(<span class="number">2</span>,<span class="number">0</span>,<span class="string">"ddd"</span>,<span class="string">"eee"</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">//[ 'aaa', 'bbb', 'ddd', 'eee', 'ccc' ]</span></div><div class="line"><span class="built_in">console</span>.log(arr_re);  <span class="comment">// [];</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>5.数组的迭代方法</p>
+<blockquote>
+<p>ES5中数组有5个迭代方法<br>every(): 如果函数对每一项都返回true,则返回true<br>some(); 如果函数的任意一项返回true,则返回true<br>filter(); 如果符合逻辑处理中的项返回true,那么这些项将会组成新的数组返回<br>map(); 返回每次调用完成之后重新组成数组<br>forEach(); 对数组中的每一项运行给定的函数,该方法没有返回值</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//every</span></div><div class="line"><span class="keyword">var</span> arr_numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</div><div class="line"><span class="keyword">var</span> result = arr_numbers.every(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> item &gt;<span class="number">2</span>;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(result)  <span class="comment">//false </span></div><div class="line"><span class="comment">//some</span></div><div class="line"><span class="keyword">var</span> arr_numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</div><div class="line"><span class="keyword">var</span> result = arr_numbers.some(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> item &gt;<span class="number">2</span>;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(result)  <span class="comment">//true</span></div><div class="line"><span class="comment">//filter</span></div><div class="line"><span class="keyword">var</span> arr_numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</div><div class="line"><span class="keyword">var</span> result = arr_numbers.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> item &gt;<span class="number">2</span>;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(result)  <span class="comment">//[ 3, 4, 5, 4, 3 ]</span></div><div class="line"><span class="comment">//forEach</span></div><div class="line"><span class="keyword">var</span> arr_numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</div><div class="line">arr_numbers.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(item ==<span class="number">2</span>)&#123;</div><div class="line">        <span class="built_in">console</span>.log(item);</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(arr_numbers );</div><div class="line"><span class="comment">/*</span></div><div class="line">2</div><div class="line">2</div><div class="line">[ 1, 2, 3, 4, 5, 4, 3, 2, 1 ]</div><div class="line">*/</div><div class="line"><span class="comment">//map</span></div><div class="line"><span class="keyword">var</span> arr_numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</div><div class="line"><span class="keyword">var</span> result = arr_numbers.map(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> item *<span class="number">2</span>;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(result)  <span class="comment">//[ 2, 4, 6, 8, 10, 8, 6, 4, 2 ]</span></div></pre></td></tr></table></figure>
+<p><code>以上方法都是ES5的所以可能也会涉及到浏览器兼容问题哦~</code></p>
+<p>6.数组的缩小方法<br>ES5新增了2个缩小数组的方法:reduce()和reduceRight(),这两个方法都会迭代数组的所有项,然后构建一个最终的返回值,reduce()会从数组的第一项开始迭代,而reduceRight()会从最后一项开始迭代并且向前遍历.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">	这两个方法都是接受4个参数(前一个值,当前值,当前项的索引,当前对象)</div><div class="line">*/</div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</div><div class="line"><span class="keyword">var</span> sum = arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">pre,cur,index,arr</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> pre+cur;</div><div class="line">&#125;) </div><div class="line"><span class="built_in">console</span>.log(sum);   <span class="comment">//21</span></div><div class="line"><span class="comment">//reduceRight();也是如此所以就不用细说了,这次数组说明就到这里,以后可能会添加es6的数组的扩展哦~~欢迎阅读</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>帅的人已经打赏~！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="https://chuhanan.github.io/wechatpay.png" alt="QQ:384840951 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://chuhanan.github.io/alipay.png" alt="QQ:384840951 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES5/" rel="tag">#ES5</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/04/Chummy_Life_01/" rel="next" title="低头努力,剩下的交给时间">
+                <i class="fa fa-chevron-left"></i> 低头努力,剩下的交给时间
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/04/ES6解构赋值/" rel="prev" title="ES6 解构赋值">
+                ES6 解构赋值 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<section id="comments">
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="2017/05/04/ES5_Array说明/" data-title="ES5 Array详细" data-url="http://yoursite.com/2017/05/04/ES5_Array说明/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chuhan"};
+(function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+ || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/13514230?v=3&s=460"
+               alt="QQ:384840951" />
+          <p class="site-author-name" itemprop="name">QQ:384840951</p>
+          <p class="site-description motion-element" itemprop="description">人生不只有代码,还有诗和远方</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chuhanan/chuhanan.github.io" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://ltaoo.github.io/" title="ltaoo" target="_blank">ltaoo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yohnz.github.com/" title="云雾" target="_blank">云雾</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="codergao.cn" title="Coder-Gao" target="_blank">Coder-Gao</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://guoyongfeng.github.io/idoc/" title="郭永峰老师" target="_blank">郭永峰老师</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://foxsnower.github.io/" title="FoxSnower" target="_blank">FoxSnower</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-JS-你不知道的Array"><span class="nav-number">1.</span> <span class="nav-text">1. JS 你不知道的Array</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">QQ:384840951</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chuhan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

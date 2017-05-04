@@ -1,0 +1,867 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="React," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="ES6版以下几点需要注意  不支持 getInitialState 在设置组件初始的 state ，可在组件的 constructor 中通过 this.state 设置，也可直接作为 properties 定义  propTypes、defaultProps 作为 properties 定义，也可在组件外部通过键值对方式设置。  不支持 mixins，可以使用高阶组件写法，或者 decorato">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React基础知识详细_ES6版">
+<meta property="og:url" content="http://yoursite.com/2017/05/04/React_base01_es6/index.html">
+<meta property="og:site_name" content="夏木南生">
+<meta property="og:description" content="ES6版以下几点需要注意  不支持 getInitialState 在设置组件初始的 state ，可在组件的 constructor 中通过 this.state 设置，也可直接作为 properties 定义  propTypes、defaultProps 作为 properties 定义，也可在组件外部通过键值对方式设置。  不支持 mixins，可以使用高阶组件写法，或者 decorato">
+<meta property="og:updated_time" content="2017-05-04T01:39:31.486Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React基础知识详细_ES6版">
+<meta name="twitter:description" content="ES6版以下几点需要注意  不支持 getInitialState 在设置组件初始的 state ，可在组件的 constructor 中通过 this.state 设置，也可直接作为 properties 定义  propTypes、defaultProps 作为 properties 定义，也可在组件外部通过键值对方式设置。  不支持 mixins，可以使用高阶组件写法，或者 decorato">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6317246749018686000,
+      author: '博主大人'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/04/React_base01_es6/"/>
+
+  <title> React基础知识详细_ES6版 | 夏木南生 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">夏木南生</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">楚寒</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            我的资料
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时光轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                React基础知识详细_ES6版
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-04T09:39:31+08:00" content="2017-05-04">
+              2017-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/04/React_base01_es6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/04/React_base01_es6/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="ES6版以下几点需要注意"><a href="#ES6版以下几点需要注意" class="headerlink" title="ES6版以下几点需要注意"></a>ES6版以下几点需要注意</h3><blockquote>
+<ul>
+<li>不支持 getInitialState 在设置组件初始的 state ，可在组件的 constructor 中通过 this.state 设置，也可直接作为 properties 定义 </li>
+<li>propTypes、defaultProps 作为 properties 定义，也可在组件外部通过键值对方式设置。 </li>
+<li>不支持 mixins，可以使用高阶组件写法，或者 decorator </li>
+<li>组件的名字的首字母一定要大写 </li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h3 id="顶层API"><a href="#顶层API" class="headerlink" title="顶层API"></a>顶层API</h3><p>最简单的React组件及其渲染<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 最简单的一个组件</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimpleComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span> &lt;div&gt; here we go &lt;/div&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 我们可以看看React给我们提供了哪些顶层组件</span></div><div class="line"><span class="built_in">console</span>.log( React );</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> SimpleComponent;</div></pre></td></tr></table></figure></p>
+<p><code>react.js</code></p>
+<blockquote>
+<p>React.Children: Object<br>   React.Component: ReactComponent(props, context, updater)<br>React.DOM: Object<br>React.PropTypes: Object<br>React.cloneElement: (element, props, children)<br>React.createClass: (spec)<br>React.createElement: (type, props, children)<br>React.createFactory: (type)<br>React.createMixin: (mixin)<br>React.isValidElement: (object)</p>
+</blockquote>
+<p><code>Component API</code></p>
+<blockquote>
+<p>this.context: Object<br>this.props: Object<br>this.refs: Object<br>this.state: Object<br>this.setState: Object</p>
+</blockquote>
+<p><code>react-dom.js</code></p>
+<blockquote>
+<p>ReactDOM.findDOMNode: findDOMNode(componentOrElement)<br>ReactDOM.render: ()<br>ReactDOM.unmountComponentAtNode: (container)</p>
+</blockquote>
+<h3 id="jsx语法"><a href="#jsx语法" class="headerlink" title="jsx语法"></a>jsx语法</h3><p><strong>类似 xml 的语法，用来描述组件树 </strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">classname</span>=<span class="string">"x"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>#<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">component</span> <span class="attr">x</span>=<span class="string">"y"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">component</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>不用JSX，用React提供的API写的话</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">React.createElement(<span class="string">'div'</span>,&#123;</div><div class="line">  <span class="attr">className</span>:<span class="string">'x'</span></div><div class="line">    &#125;,[</div><div class="line">    React.createElement(<span class="string">'a'</span>,&#123;<span class="attr">href</span>:<span class="string">'#'</span>&#125;,<span class="string">'#'</span>),</div><div class="line">    React.createElement(Component,&#123;<span class="attr">x</span>:<span class="string">'y'</span>&#125;,<span class="number">1</span>);</div><div class="line">]);</div></pre></td></tr></table></figure></p>
+<p><strong>注释、命名、根元素个数、JSX 嵌入变量</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 1. 组件命名遵循驼峰命名，首字母大写</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ComponentDemo</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render()&#123;</div><div class="line">    &#123;</div><div class="line">      <span class="comment">/*</span></div><div class="line">      2. 这是代码注释</div><div class="line">      也可以是多行</div><div class="line">      */</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">const</span> name = <span class="keyword">this</span>.props.name;</div><div class="line"></div><div class="line">    <span class="comment">// 3. render 方法 return 回来的根元素只能是一个，超过会报错</span></div><div class="line">    <span class="comment">// 4. &#123; &#125; 里面可以写JS代码</span></div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">        hello, &#123;name ? name : "我是默认的"&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> ComponentDemo;</div></pre></td></tr></table></figure></p>
+<p><em>React只有一个限制， 组件只能渲染单个根节点。如果你想要返回多个节点，它们必须被包含在同一个节点里。</em><br><strong>styles</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StyleDemo</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render()&#123;</div><div class="line">    <span class="comment">// 5. 在JS文件里面给组件定义样式</span></div><div class="line">    <span class="keyword">var</span> MyComponentStyles = &#123;</div><div class="line">        <span class="attr">color</span>: <span class="string">'blue'</span>,</div><div class="line">        <span class="attr">fontSize</span>: <span class="string">'28px'</span></div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&#123;MyComponentStyles&#125;</span>&gt;</span></span></div><div class="line">          可以直接这样写行内样式</div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> StyleDemo;</div></pre></td></tr></table></figure></p>
+<p><strong>JSX SPREAD</strong><br>可以用通过 {…obj} 来批量设置一个对象的键值对到组件的属性，注意顺序<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpreadDemo</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  componentWillMount()&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.props);</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span> &#123;this.props.name&#125; is a &#123;this.props.type&#125; <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> SpreadDemo;</div></pre></td></tr></table></figure></p>
+<p>属性名不能和 js 关键字冲突<br>例如：<code>className</code>, <code>readOnly</code>, <code>htmlfor</code></p>
+<h3 id="数据流-state-props-propType"><a href="#数据流-state-props-propType" class="headerlink" title="数据流: state props propType"></a>数据流: state props propType</h3><p>state &amp;&amp; setState<br>用状态控制组件变化 可以把一个组件看做一个状态机, 每一次状态对应于组件的一个 ui<br><strong>组件内部的状态，可以使用 state</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StateDemo</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  state = &#123;</div><div class="line">    <span class="attr">secondsElapsed</span>: <span class="number">0</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  tick()&#123;</div><div class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">secondsElapsed</span>: <span class="keyword">this</span>.state.secondsElapsed + <span class="number">1</span> &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  componentDidMount()&#123;</div><div class="line">    <span class="keyword">this</span>.interval = setInterval( <span class="keyword">this</span>.tick.bind(<span class="keyword">this</span>), <span class="number">1000</span> );</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  componentWillUnmount()&#123;</div><div class="line">    clearInterval(<span class="keyword">this</span>.interval);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>目前已经计时：&#123;this.state.secondsElapsed&#125;秒<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> StateDemo;</div></pre></td></tr></table></figure></p>
+<p><strong>props</strong><br>通过 this.props 可以获取传递给该组件的属性值，还可以通过定义 getDefaultProps 来指定默认属性值（这是ES5的写法，ES6定义组件的默认props可以直接写props）<br>下面几个是props的常用API：</p>
+<blockquote>
+<ul>
+<li>this.props.children</li>
+<li>this.props.map</li>
+<li>this.props.filter</li>
+</ul>
+</blockquote>
+<p><strong>props是调用组件的时候传递进去的数据，一般用于组件树数据传递</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PropsDemo</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  props = &#123;</div><div class="line">    <span class="attr">title</span>: <span class="string">'这是默认的title属性值'</span></div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.props);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">b</span>&gt;</span>&#123;this.props.title&#125;<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> PropsDemo;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 组件调用方式</span></div><div class="line"><span class="comment">// &lt;PropsDemo title="设置的标题" /&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>propTypes</strong><br>通过指定 propTypes 可以校验props属性值的类型，校验可提升开发者体验，用于约定统一的接口规范。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component, PropTypes &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PropTypesDemo</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">static</span> propTypes = &#123;</div><div class="line">    <span class="attr">title</span>: PropTypes.string.isRequired</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  props = &#123;</div><div class="line">      <span class="attr">title</span>: <span class="string">'默认的title'</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">b</span>&gt;</span>&#123;this.props.title&#125;<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> PropTypesDemo;</div></pre></td></tr></table></figure></p>
+<h3 id="调用API定义组件"><a href="#调用API定义组件" class="headerlink" title="调用API定义组件"></a>调用API定义组件</h3><p>用 React.createClass或者React.Component 定义组件时允许传入相应的配置及组件API的使用，包括组件生命周期提供的一系列钩子函数。</p>
+<ul>
+<li>组件初始定义<ul>
+<li>getDefaultProps 得到默认属性对象，这个在ES6的时候不需要这样定义<ul>
+<li>propTypes 属性检验规则</li>
+<li>mixins 组件间公用方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>初次创建组件时调用<ul>
+<li>getInitialState 得到初始状态对象</li>
+<li>render 返回组件树. 必须设置</li>
+<li>componentDidMount 渲染到 dom 树中是调用，只在客户端调用，可用于获取原生节点</li>
+</ul>
+</li>
+<li>组件的属性值改变时调用<ul>
+<li>componentWillReceiveProps 属性改变调用</li>
+<li>shouldComponentUpdate 判断是否需要重新渲染</li>
+<li>render 返回组件树. 必须设置</li>
+<li>componentDidUpdate 渲染到 dom 树中是调用, 可用于获取原生节点</li>
+</ul>
+</li>
+<li>销毁组件<ul>
+<li>componentWillUnmount 组件从 dom 销毁前调用</li>
+</ul>
+</li>
+<li>示例诠释组件全生命周期<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LifeCycle</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  Props = &#123;</div><div class="line">    <span class="attr">value</span>: <span class="string">'开始渲染'</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  componentWillReceiveProps(nextProps)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'componentWillReceiveProps'</span>);</div><div class="line">    <span class="keyword">this</span>.setState(&#123;</div><div class="line">        <span class="attr">value</span>: nextProps.value</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  shouldComponentUpdate(nextProps,nextState)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'shouldComponentUpdate'</span>);</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  componentWillUpdate(nextProps,nextState)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'componentWillUpdate'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  componentWillMount()&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'componentWillMount'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'render'</span>);</div><div class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;this.props.value&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  componentDidMount() &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'componentDidMount'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  componentDidUpdate(prevProps,prevState) &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'componentDidUpdate'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  componentWillUnmount(prevProps,prevState) &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'componentWillUnmount'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> LifeCycle;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>调用组件并销毁组件示例<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> LifeCycleDemo <span class="keyword">from</span> <span class="string">'./LifeCycleDemo'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DestroyComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  state = &#123;</div><div class="line">    <span class="attr">value</span>:<span class="number">1</span>,</div><div class="line">    <span class="attr">destroyed</span>:<span class="literal">false</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  increase = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">this</span>.setState(&#123;</div><div class="line">      <span class="attr">value</span>: <span class="keyword">this</span>.state.value + <span class="number">1</span></div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  destroy = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">this</span>.setState(&#123;</div><div class="line">      <span class="attr">destroyed</span>: <span class="literal">true</span></div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.state.destroyed)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.increase&#125;</span>&gt;</span>每次加1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.destroy&#125;</span>&gt;</span>干掉这两个按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">LifeCycleDemo</span> <span class="attr">value</span>=<span class="string">&#123;this.state.value&#125;/</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default DestroyComponent;</div></pre></td></tr></table></figure></p>
+<p><strong>回顾组件的渲染过程</strong></p>
+<blockquote>
+<ul>
+<li>创建-》渲染-》销毁<ul>
+<li>getDefaultProps()</li>
+<li>getInitialState()</li>
+<li>componentWillMount()</li>
+<li>render()</li>
+<li>componentDidMount()</li>
+<li>componentWillUnmount()</li>
+</ul>
+</li>
+<li>更新组件<ul>
+<li>componentWillReceiveProps()</li>
+<li>shouldComponentUpdate()</li>
+<li>componentWillUpdate()</li>
+<li>render()</li>
+<li>componentDidUpdate()</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="使用ref对操作DOM"><a href="#使用ref对操作DOM" class="headerlink" title="使用ref对操作DOM"></a>使用ref对操作DOM</h3><ul>
+<li>ReactDOM.findDOMNode</li>
+<li>this.refs.xxx</li>
+</ul>
+<p>获取DOM后可以方便结合现有非 react 类库的使用，通过 ref/refs 可以取得组件实例，进而取得原生节点，不过尽量通过 state/props 更新组件，不要使用该功能去更新组件的DOM。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> ReactDOM, &#123; findDOMNode &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HandleDOMComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  componentDidMount()&#123;</div><div class="line">    <span class="comment">// 两种方式都可以获取到元素</span></div><div class="line">    <span class="keyword">let</span> ele = findDOMNode(<span class="keyword">this</span>.refs.content);</div><div class="line">    <span class="keyword">let</span> ele2 = <span class="keyword">this</span>.refs.content;</div><div class="line"></div><div class="line">    <span class="comment">// 如果想用 jquery，那么这是个好时机</span></div><div class="line">    <span class="built_in">console</span>.log( ele );</div><div class="line">    <span class="built_in">console</span>.log( ele.innerHTML );</div><div class="line">    <span class="built_in">console</span>.log( ele2.innerHTML );</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>来吧，一起操作DOM<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">'content'</span>&gt;</span>这是我DOM元素里面的内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> HandleDOMComponent;</div></pre></td></tr></table></figure>
+<p>再看一个有趣的例子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; findDOMNode &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Refs</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  state = &#123;</div><div class="line">    <span class="attr">red</span>: <span class="number">0</span>,</div><div class="line">    <span class="attr">green</span>: <span class="number">0</span>,</div><div class="line">    <span class="attr">pink</span>: <span class="number">0</span></div><div class="line">  &#125;</div><div class="line">  update = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">this</span>.setState(&#123;</div><div class="line">      <span class="attr">red</span>: findDOMNode(<span class="keyword">this</span>.refs.red).value,</div><div class="line">      <span class="attr">green</span>: findDOMNode(<span class="keyword">this</span>.refs.green).value,</div><div class="line">      <span class="attr">pink</span>: findDOMNode(<span class="keyword">this</span>.refs.pink).value</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;Slider ref="red" update=&#123;this.update&#125; /&gt;</div><div class="line">        &#123;this.state.red&#125;</div><div class="line">        &lt;br /&gt;</div><div class="line">        &lt;Slider ref="green" update=&#123;this.update&#125; /&gt;</div><div class="line">        &#123;this.state.green&#125;</div><div class="line">        &lt;br /&gt;</div><div class="line">        &lt;Slider ref="pink" update=&#123;this.update&#125; /&gt;</div><div class="line">        &#123;this.state.pink&#125;</div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Slider extends Component &#123;</div><div class="line">  render()&#123;</div><div class="line">    return (</div><div class="line">        &lt;input type="range"</div><div class="line">          min="0"</div><div class="line">          max="255"</div><div class="line">          onChange=&#123;this.props.update&#125; /&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">export default Refs;</div></pre></td></tr></table></figure></p>
+<h3 id="事件event"><a href="#事件event" class="headerlink" title="事件event"></a>事件event</h3><p>可以通过设置原生 dom 组件的 onEventType 属性来监听 dom 事件，例如 onClick, onMouseDown，在加强组件内聚性的同时，避免了传统 html 的全局变量污染<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HandleEvent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  state = &#123; <span class="attr">liked</span>: <span class="literal">false</span> &#125;</div><div class="line"></div><div class="line">  handleClick = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">liked</span>: !<span class="keyword">this</span>.state.liked&#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">let</span> text = <span class="keyword">this</span>.state.liked ? <span class="string">'喜欢'</span> : <span class="string">'不喜欢'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span></span></div><div class="line">        我 &#123;text&#125; 你.</div><div class="line">      <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> HandleEvent;</div></pre></td></tr></table></figure></p>
+<p><strong>注意：事件回调函数参数为标准化的事件对象，可以不用考虑 IE</strong></p>
+<h3 id="8-组件的组合"><a href="#8-组件的组合" class="headerlink" title="8. 组件的组合"></a>8. 组件的组合</h3><ul>
+<li>受限组件 &amp;&amp; 非受限组件</li>
+</ul>
+<p>受限组件示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">render() &#123;</div><div class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"Hello!"</span> /&gt;</span>;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>非受限组件示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">render() &#123;</div><div class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"Hello!"</span> /&gt;</span>;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>使用自定义的组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ComponentA</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">'#'</span>&gt;</span>我是组件A<span class="tag">&lt;<span class="name">br</span>/&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ComponentB</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">'#'</span>&gt;</span>我是组件B<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelfCreateComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">i</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">ComponentA</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ComponentB</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> SelfCreateComponent;</div></pre></td></tr></table></figure>
+</li>
+<li><p>组合 CHILDREN<br>自定义组件中可以通过 this.props.children 访问自定义组件的子节点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 定义一个组件，通过React.Children 拿到组件里面的子元素</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></div><div class="line">      &#123;</div><div class="line">        React.Children.map( this.props.children, function(c)&#123;</div><div class="line">          return <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;c&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span>;</div><div class="line">        &#125;)</div><div class="line">      &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UseChildrenComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">ListComponent</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Facebook<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Google<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>SpaceX<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">ListComponent</span>&gt;</span></div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> UseChildrenComponent;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="form表单操作"><a href="#form表单操作" class="headerlink" title="form表单操作"></a>form表单操作</h3><blockquote>
+<ul>
+<li>React表单组件和 html 的不同点</li>
+<li>value/checked 属性设置后，用户输入无效</li>
+<li>textarea 的值要设置在 value 属性</li>
+<li><code>&lt;Textarea name=&quot;description&quot; value=&quot;This is a description.&quot; /&gt;</code></li>
+<li>select 的 value 属性可以是数组，不建议使用 option 的 selected 属性</li>
+<li><code>&lt;select multiple={true} value={[&#39;B&#39;, &#39;C&#39;]}&gt;
+&lt;option value=&quot;A&quot;&gt;Apple&lt;/option&gt;
+&lt;option value=&quot;B&quot;&gt;Banana&lt;/option&gt;
+&lt;option value=&quot;C&quot;&gt;Cranberry&lt;/option&gt;
+&lt;/select&gt;</code></li>
+<li>input/textarea 的 onChange 用户每次输入都会触发（即使不失去焦点）</li>
+<li>radio/checkbox/option 点击后触发 onChange</li>
+</ul>
+</blockquote>
+<ul>
+<li>综合表达组件示例<br>定义复选框组件Checkboxes<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Checkboxes</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render()&#123;</div><div class="line">      <span class="keyword">return</span> &lt;span&gt;</div><div class="line">          A</div><div class="line">          &lt;input onChange=&#123;this.props.handleCheck&#125;  name="goodCheckbox" type="checkbox" value="A"/&gt;</div><div class="line">          B</div><div class="line">          &lt;input onChange=&#123;this.props.handleCheck&#125; name="goodCheckbox" type="checkbox" value="B" /&gt;</div><div class="line">          C</div><div class="line">          &lt;input onChange=&#123;this.props.handleCheck&#125; name="goodCheckbox" type="checkbox" value="C" /&gt;</div><div class="line">      &lt;/span&gt;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default Checkboxes;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>定义单选框按钮组RadioButtons<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RadioButtons</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  saySomething()&#123;</div><div class="line">      alert(<span class="string">"我是一个很棒的单选框按钮组"</span>);</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">      <span class="keyword">return</span> &lt;span&gt;</div><div class="line">          A</div><div class="line">          &lt;input onChange=&#123;this.props.handleRadio&#125; name="goodRadio" type="radio" value="A"/&gt;</div><div class="line">          B</div><div class="line">          &lt;input onChange=&#123;this.props.handleRadio&#125; name="goodRadio" type="radio" defaultChecked value="B"/&gt;</div><div class="line">          C</div><div class="line">          &lt;input onChange=&#123;this.props.handleRadio&#125; name="goodRadio" type="radio" value="C"/&gt;</div><div class="line">      &lt;/span&gt;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default RadioButtons;</div></pre></td></tr></table></figure></p>
+<p>FormApp组件集成两个组件并处理表单逻辑<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> Checkboxes <span class="keyword">from</span> <span class="string">'./Checkboxes'</span>;</div><div class="line"><span class="keyword">import</span> RadioButtons <span class="keyword">from</span> <span class="string">'./RadioButtons'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FormApp</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  state = &#123;</div><div class="line">      <span class="attr">inputValue</span>: <span class="string">'请输入...'</span>,</div><div class="line">      <span class="attr">selectValue</span>: <span class="string">'A'</span>,</div><div class="line">      <span class="attr">radioValue</span>:<span class="string">'B'</span>,</div><div class="line">      <span class="attr">checkValues</span>:[],</div><div class="line">      <span class="attr">textareaValue</span>:<span class="string">'请输入...'</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  handleSubmit = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</div><div class="line">      e.preventDefault();</div><div class="line"></div><div class="line">      <span class="keyword">let</span> formData = &#123;</div><div class="line">          <span class="attr">input</span>: <span class="keyword">this</span>.refs.goodInput.value,</div><div class="line">          <span class="attr">select</span>: <span class="keyword">this</span>.refs.goodSelect.value,</div><div class="line">          <span class="attr">textarea</span>: <span class="keyword">this</span>.refs.goodTextarea.value,</div><div class="line">          <span class="attr">radio</span>: <span class="keyword">this</span>.state.radioValue,</div><div class="line">          <span class="attr">check</span>: <span class="keyword">this</span>.state.checkValues,</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      alert(<span class="string">'您即将提交表单'</span>)</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'你提交的数据是:'</span>)</div><div class="line">      <span class="built_in">console</span>.log(formData);</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  handleRadio = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">this</span>.setState(&#123;</div><div class="line">          <span class="attr">radioValue</span>: e.target.value,</div><div class="line">      &#125;)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  handleCheck = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">let</span> checkValues = <span class="keyword">this</span>.state.checkValues.slice();</div><div class="line">      <span class="keyword">let</span> newVal = e.target.value;</div><div class="line">      <span class="keyword">let</span> index = checkValues.indexOf(newVal);</div><div class="line"></div><div class="line">      <span class="keyword">if</span>( index == <span class="number">-1</span> )&#123;</div><div class="line">          checkValues.push( newVal )</div><div class="line">      &#125;<span class="keyword">else</span>&#123;</div><div class="line">          checkValues.splice(index,<span class="number">1</span>);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="keyword">this</span>.setState(&#123;</div><div class="line">          <span class="attr">checkValues</span>: checkValues,</div><div class="line">      &#125;)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render()&#123;</div><div class="line">      <span class="keyword">return</span> &lt;form onSubmit=&#123;this.handleSubmit&#125;&gt;</div><div class="line">          &lt;h3&gt; 请输入内容 &lt;/h3&gt;</div><div class="line">          &lt;input ref="goodInput" type="text" defaultValue=&#123;this.state.inputValue &#125;/&gt;</div><div class="line">          &lt;br/&gt;</div><div class="line"></div><div class="line">          &lt;h3&gt; 请选择 &lt;/h3&gt;</div><div class="line">          &lt;select defaultValue=&#123; this.state.selectValue &#125; ref="goodSelect"&gt;</div><div class="line">              &lt;option value="A"&gt;A&lt;/option&gt;</div><div class="line">              &lt;option value="B"&gt;B&lt;/option&gt;</div><div class="line">              &lt;option value="C"&gt;C&lt;/option&gt;</div><div class="line">              &lt;option value="D"&gt;D&lt;/option&gt;</div><div class="line">              &lt;option value="E"&gt;E&lt;/option&gt;</div><div class="line">          &lt;/select&gt;</div><div class="line">          &lt;br/&gt;</div><div class="line"></div><div class="line">          &lt;h3&gt; 单项选择 &lt;/h3&gt;</div><div class="line">          &lt;RadioButtons ref="goodRadio" handleRadio=&#123;this.handleRadio&#125; /&gt;</div><div class="line">          &lt;br/&gt;</div><div class="line"></div><div class="line">          &lt;h3&gt; 多选按钮 &lt;/h3&gt;</div><div class="line">          &lt;Checkboxes handleCheck=&#123;this.handleCheck&#125; /&gt;</div><div class="line">          &lt;br/&gt;</div><div class="line"></div><div class="line">          &lt;h3&gt; 反馈建议 &lt;/h3&gt;</div><div class="line">          &lt;textarea defaultValue=&#123;this.state.textareaValue&#125; ref="goodTextarea"&gt;&lt;/textarea&gt;</div><div class="line">          &lt;br/&gt;</div><div class="line"></div><div class="line">          &lt;button type="submit"&gt;确认提交&lt;/button&gt;</div><div class="line">      &lt;/form&gt;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default FormApp;</div></pre></td></tr></table></figure></p>
+<h3 id="10-mixin共享"><a href="#10-mixin共享" class="headerlink" title="10. mixin共享"></a>10. mixin共享</h3><p>mixin 是一个普通对象，通过 mixin 可以在不同组件间共享代码，使你的React程序变得更为可重用。</p>
+<p>注意，ES6语法不支持mixin写法，而是可以通过decorator去实现代码共享，这里使用ES5语法做示例说明。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> SetIntervalMixin = &#123;</div><div class="line">  <span class="attr">componentWillMount</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.intervals = [];</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">setInterval</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.intervals.push(setInterval.apply(<span class="literal">null</span>, <span class="built_in">arguments</span>));</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">componentWillUnmount</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.intervals.forEach(clearInterval);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> MixinDemo = React.createClass(&#123;</div><div class="line">  <span class="comment">// Use the mixin</span></div><div class="line">  mixins: [SetIntervalMixin],</div><div class="line">  <span class="attr">getInitialState</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;<span class="attr">seconds</span>: <span class="number">0</span>&#125;;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">componentDidMount</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Call a method on the mixin</span></div><div class="line">    <span class="keyword">this</span>.setInterval(<span class="keyword">this</span>.tick, <span class="number">1000</span>);</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">tick</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">seconds</span>: <span class="keyword">this</span>.state.seconds + <span class="number">1</span>&#125;);</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span></div><div class="line">        计时器已经运行了： &#123;this.state.seconds&#125; 秒.</div><div class="line">      <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> MixinDemo;</div></pre></td></tr></table></figure></p>
+<p>那么，接下来，我们用high-order component的方式来实现mixin：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> Mixin = <span class="function"><span class="params">MixinComponent</span> =&gt;</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">super</span>();</div><div class="line">    <span class="keyword">this</span>.state = &#123; <span class="attr">val</span>: <span class="number">0</span> &#125;;</div><div class="line">    <span class="keyword">this</span>.update = <span class="keyword">this</span>.update.bind(<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line">  update()&#123;</div><div class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">val</span>: <span class="keyword">this</span>.state.val + <span class="number">1</span>&#125;);</div><div class="line">  &#125;</div><div class="line">  componentWillMount()&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'will mount...'</span>)</div><div class="line">  &#125;</div><div class="line">  render()&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;MixinComponent</div><div class="line">        update=&#123;this.update&#125;</div><div class="line">        &#123;...this.state&#125;</div><div class="line">        &#123;...this.props&#125;</div><div class="line">       /&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">  componentDidMount()&#123;</div><div class="line">    console.log('mounted...')</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const Button = (props) =&gt; &#123;</div><div class="line">  return (</div><div class="line">    &lt;button onClick=&#123;props.update&#125;&gt;</div><div class="line">      &#123;props.txt&#125; - &#123;props.val&#125;</div><div class="line">    &lt;/button&gt;</div><div class="line">  )</div><div class="line">&#125;</div><div class="line"></div><div class="line">const Label = (props) =&gt; &#123;</div><div class="line">  return (</div><div class="line">    &lt;label onMouseMove=&#123;props.update&#125;&gt;</div><div class="line">      &#123;props.txt&#125; - &#123;props.val&#125;</div><div class="line">    &lt;/label&gt;</div><div class="line">  )</div><div class="line">&#125;</div><div class="line"></div><div class="line">let ButtonMixed = Mixin(Button);</div><div class="line">let LabelMixed = Mixin(Label);</div><div class="line"></div><div class="line">class Mixins extends Component &#123;</div><div class="line">  render()&#123;</div><div class="line">    return (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;ButtonMixed txt="button" /&gt;</div><div class="line">        &lt;LabelMixed txt="label" /&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default Mixins;</div></pre></td></tr></table></figure></p>
+<pre><code>---此文摘抄自学习珠峰郭永峰老师的React
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>帅的人已经打赏~！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="https://chuhanan.github.io/wechatpay.png" alt="QQ:384840951 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://chuhanan.github.io/alipay.png" alt="QQ:384840951 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag">#React</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/04/MongoDB_03/" rel="next" title="MongoDB从入门到放弃_03">
+                <i class="fa fa-chevron-left"></i> MongoDB从入门到放弃_03
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/04/WEBer笔试面试/" rel="prev" title="前端开发知识点大纲">
+                前端开发知识点大纲 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<section id="comments">
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="2017/05/04/React_base01_es6/" data-title="React基础知识详细_ES6版" data-url="http://yoursite.com/2017/05/04/React_base01_es6/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chuhan"};
+(function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+ || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/13514230?v=3&s=460"
+               alt="QQ:384840951" />
+          <p class="site-author-name" itemprop="name">QQ:384840951</p>
+          <p class="site-description motion-element" itemprop="description">人生不只有代码,还有诗和远方</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chuhanan/chuhanan.github.io" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://ltaoo.github.io/" title="ltaoo" target="_blank">ltaoo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yohnz.github.com/" title="云雾" target="_blank">云雾</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="codergao.cn" title="Coder-Gao" target="_blank">Coder-Gao</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://guoyongfeng.github.io/idoc/" title="郭永峰老师" target="_blank">郭永峰老师</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://foxsnower.github.io/" title="FoxSnower" target="_blank">FoxSnower</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6版以下几点需要注意"><span class="nav-number">1.</span> <span class="nav-text">ES6版以下几点需要注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顶层API"><span class="nav-number">2.</span> <span class="nav-text">顶层API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsx语法"><span class="nav-number">3.</span> <span class="nav-text">jsx语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据流-state-props-propType"><span class="nav-number">4.</span> <span class="nav-text">数据流: state props propType</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用API定义组件"><span class="nav-number">5.</span> <span class="nav-text">调用API定义组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用ref对操作DOM"><span class="nav-number">6.</span> <span class="nav-text">使用ref对操作DOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件event"><span class="nav-number">7.</span> <span class="nav-text">事件event</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-组件的组合"><span class="nav-number">8.</span> <span class="nav-text">8. 组件的组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#form表单操作"><span class="nav-number">9.</span> <span class="nav-text">form表单操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-mixin共享"><span class="nav-number">10.</span> <span class="nav-text">10. mixin共享</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">QQ:384840951</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chuhan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

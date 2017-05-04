@@ -1,0 +1,742 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JAVA," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="学完了javase之后对自己所理解的集合做一个小结,如有出入欢迎吐槽 :)下面是我自己画的一张图,简单的对集合做一个分类">
+<meta name="keywords" content="JAVA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA集合总结">
+<meta property="og:url" content="http://yoursite.com/2017/05/04/Java_02_集合总结/index.html">
+<meta property="og:site_name" content="夏木南生">
+<meta property="og:description" content="学完了javase之后对自己所理解的集合做一个小结,如有出入欢迎吐槽 :)下面是我自己画的一张图,简单的对集合做一个分类">
+<meta property="og:image" content="http://obqi5r9i0.bkt.clouddn.com/java_01_%E9%9B%86%E5%90%88%E6%80%BB%E7%BB%93.png">
+<meta property="og:updated_time" content="2017-05-04T01:39:31.473Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA集合总结">
+<meta name="twitter:description" content="学完了javase之后对自己所理解的集合做一个小结,如有出入欢迎吐槽 :)下面是我自己画的一张图,简单的对集合做一个分类">
+<meta name="twitter:image" content="http://obqi5r9i0.bkt.clouddn.com/java_01_%E9%9B%86%E5%90%88%E6%80%BB%E7%BB%93.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6317246749018686000,
+      author: '博主大人'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/04/Java_02_集合总结/"/>
+
+  <title> JAVA集合总结 | 夏木南生 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">夏木南生</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">楚寒</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            我的资料
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时光轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JAVA集合总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-04T09:39:31+08:00" content="2017-05-04">
+              2017-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/04/Java_02_集合总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/04/Java_02_集合总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学完了javase之后对自己所理解的集合做一个小结,如有出入欢迎吐槽 :)<br>下面是我自己画的一张图,简单的对集合做一个分类<br><img src="http://obqi5r9i0.bkt.clouddn.com/java_01_%E9%9B%86%E5%90%88%E6%80%BB%E7%BB%93.png" alt=""></p>
+<a id="more"></a>
+<h3 id="集合类接口的公共的成员方法"><a href="#集合类接口的公共的成员方法" class="headerlink" title="集合类接口的公共的成员方法:"></a>集合类接口的公共的成员方法:</h3><ul>
+<li>boolean add(E e)     //添加元素</li>
+<li>boolean remove(Object o)    //删除元素</li>
+<li>void clear()             //删除整个集合的元素</li>
+<li>boolean contains(Object o)    //判断集合内是否包含该元素</li>
+<li>boolean isEmpty()            //判断集合是否为空</li>
+<li>int size()                  //定义集合的大小</li>
+<li>boolean retainAll(Collection c)     //判断是否与集合有交集如果有 则返回true 并且把2个集合中相同的元素赋值给原集合</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;          </div><div class="line">               //测试retainAll方法&lt;/span&gt;</div><div class="line">                Collection&lt;String&gt; c =new ArrayList&lt;String&gt;();</div><div class="line">                c.add("1");</div><div class="line">                c.add("2");</div><div class="line">                c.add("3");</div><div class="line">                c.add("4");</div><div class="line">                Collection&lt;String&gt; c2 =new ArrayList&lt;String&gt;();</div><div class="line">                c2.add("4");</div><div class="line">                c2.add("5");</div><div class="line">                c2.add("6");</div><div class="line">                c2.add("7");</div><div class="line">                boolean b = c.retainAll(c2);</div><div class="line">                System.out.println(b);</div><div class="line">                System.out.println(c);</div><div class="line">                //程序的输出结果是</div><div class="line">               </div><div class="line">### Vector的特有功能</div><div class="line"></div><div class="line">* public void addElement(E obj)    //将指定的类型对象添加到此集合的末尾，将其大小增加 1</div><div class="line">* public E elementAt(int index)        //根据索引找元素</div><div class="line">* public Enumeration elements()     //返回集合中的所有的元素</div><div class="line"></div><div class="line">### LinkedList类特有功能</div><div class="line"></div><div class="line">* public void addFirst(E e)及addLast(E e)    //将指定元素插入此列表的开头或最后。</div><div class="line">* public E getFirst()及getLast()                    //返回此列表的第一个元素或最后元素。</div><div class="line">* public E removeFirst()及public E removeLast()     //移除并返回此列表的第一个元素或最后一个元素</div><div class="line"></div><div class="line">集合的遍历: Itrator</div><div class="line">                          </div><div class="line">public static void main(String[] args) &#123;</div><div class="line">     Collection&lt;Integer&gt; c =new ArrayList&lt;Integer&gt;();</div><div class="line">                c.add(1);</div><div class="line">                c.add(2);</div><div class="line">                c.add(3);</div><div class="line">                c.add(4);</div><div class="line">                Iterator&lt;Integer&gt; it = c.iterator();</div><div class="line">                while(true)&#123;</div><div class="line">                        if(it.hasNext())&#123;</div><div class="line">                                System.out.println(it.next());</div><div class="line">                        &#125;</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">注意集合修改元素的时候有2种方式,1,迭代器遍历元素,迭代器修改元素,2 集合遍历元素,集合修改元素 否则修改元素则会报一个并发修改的异常.</div><div class="line">              解决方案</div><div class="line">                        a:迭代器遍历，迭代器修改(ListIterator)</div><div class="line">                                元素添加在刚才迭代的位置</div><div class="line">                        b:集合遍历，集合修改(size()和get())</div><div class="line">                                元素添加在集合的末尾</div><div class="line">public static void main(String[] args) &#123;</div><div class="line">                //迭代器遍历  迭代器修改</div><div class="line">                ArrayList&lt;Integer&gt; arr =new ArrayList&lt;Integer&gt;();</div><div class="line">                arr.add(1);</div><div class="line">                arr.add(2);</div><div class="line">                arr.add(3);</div><div class="line">                arr.add(4);</div><div class="line">                ListIterator&lt;Integer&gt; it = arr.listIterator();</div><div class="line">                while(it.hasNext())&#123;        </div><div class="line">                        Integer i = it.next();</div><div class="line">                                        if(i==2)&#123;</div><div class="line">                                                it.add(100);</div><div class="line">                                        &#125;                                        </div><div class="line">                &#125;</div><div class="line">                System.out.println(arr);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">public static void main(String[] args) &#123;</div><div class="line">                //集合遍历  集合修改</div><div class="line">                ArrayList&lt;Integer&gt; arr =new ArrayList&lt;Integer&gt;();</div><div class="line">                arr.add(1);</div><div class="line">                arr.add(2);</div><div class="line">                arr.add(3);</div><div class="line">                arr.add(4);</div><div class="line">                for(int i=0;i&lt;arr.size();i++)&#123;</div><div class="line">                        Integer x = arr.get(i);</div><div class="line">                        if(x==2)&#123;</div><div class="line">                                arr.add(100);</div><div class="line">                        &#125;</div><div class="line">                &#125;</div><div class="line">                System.out.println(arr);</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">           3,Map接口成员方法</div><div class="line">                   V put(K key,V value)          //添加键值                                      V remove(Object key)           //删除</div><div class="line">                   void clear()                                 //清除</div><div class="line">                   boolean containsKey(Object key)      //根据键判断值是否存在</div><div class="line">                   boolean containsValue(Object value)   //根据值判断键是否存在</div><div class="line">                   Set&lt;K&gt; keySet()                            //获取map中的所有的元素</div><div class="line">                   boolean isEmpty()                     //判断是否为空</div><div class="line">                   int size()                                            //定义map的大小</div><div class="line">                   Map集合遍历:</div><div class="line">                              方式1：根据键找值</div><div class="line">                                          获取所有键的集合</div><div class="line">                                          遍历键的集合，获取到每一个键</div><div class="line">                                          根据键找值</div><div class="line">                             方式2：根据键值对对象找键和值</div><div class="line">                                         获取所有键值对对象的集合</div><div class="line">                                         遍历键值对对象的集合，获取到每一个键值对对象</div><div class="line">                                         根据键值对对象找键和值</div><div class="line">//方式1</div><div class="line">        public static void main(String[] args) &#123;</div><div class="line">                Map&lt;Integer, String&gt;  map =new HashMap&lt;Integer, String&gt;();</div><div class="line">                map.put(1, "hello");</div><div class="line">                map.put(2, "world");</div><div class="line">                map.put(3, "java");</div><div class="line">                Set&lt;Integer&gt; set =map.keySet();</div><div class="line">                for(Integer key :set)&#123;</div><div class="line">                        String s = map.get(key);</div><div class="line">                        System.out.println(key+"---"+s);</div><div class="line">                &#125;</div><div class="line">        &#125;       </div><div class="line"></div><div class="line"></div><div class="line">&lt;div class="blockcode"&gt;&lt;blockquote&gt;//方式二</div><div class="line">        public static void main(String[] args) &#123;</div><div class="line">                Map&lt;Integer, String&gt;  map =new HashMap&lt;Integer, String&gt;();</div><div class="line">                map.put(1, "hello");</div><div class="line">                map.put(2, "world");</div><div class="line">                map.put(3, "java");</div><div class="line">                Set&lt;Entry&lt;Integer, String&gt;&gt; set = map.entrySet();</div><div class="line">                for(Entry&lt;Integer, String&gt; en :set)&#123;</div><div class="line">                        Integer i = en.getKey();</div><div class="line">                        String s = en.getValue();</div><div class="line">                        System.out.println(i+"---"+s);</div><div class="line">                &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p><strong>关于集合的基础部分就写这些吧,正在整理集合的高级部分.</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>帅的人已经打赏~！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="https://chuhanan.github.io/wechatpay.png" alt="QQ:384840951 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://chuhanan.github.io/alipay.png" alt="QQ:384840951 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA/" rel="tag">#JAVA</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/04/Java_01/" rel="next" title="一道JAVA笔试题">
+                <i class="fa fa-chevron-left"></i> 一道JAVA笔试题
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/04/MongoDB_01/" rel="prev" title="MongoDB从入门到放弃_01">
+                MongoDB从入门到放弃_01 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<section id="comments">
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="2017/05/04/Java_02_集合总结/" data-title="JAVA集合总结" data-url="http://yoursite.com/2017/05/04/Java_02_集合总结/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chuhan"};
+(function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+ || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/13514230?v=3&s=460"
+               alt="QQ:384840951" />
+          <p class="site-author-name" itemprop="name">QQ:384840951</p>
+          <p class="site-description motion-element" itemprop="description">人生不只有代码,还有诗和远方</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chuhanan/chuhanan.github.io" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://ltaoo.github.io/" title="ltaoo" target="_blank">ltaoo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yohnz.github.com/" title="云雾" target="_blank">云雾</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="codergao.cn" title="Coder-Gao" target="_blank">Coder-Gao</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://guoyongfeng.github.io/idoc/" title="郭永峰老师" target="_blank">郭永峰老师</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://foxsnower.github.io/" title="FoxSnower" target="_blank">FoxSnower</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合类接口的公共的成员方法"><span class="nav-number">1.</span> <span class="nav-text">集合类接口的公共的成员方法:</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">QQ:384840951</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chuhan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
